@@ -6,6 +6,7 @@ lines = ["Welcome to the game!",
 import os
 from time import sleep
 import sys
+import winsound
 import pygame
 
 
@@ -28,15 +29,18 @@ def start():
     rank = "Private"
     Name = input("Enter your name: ")
     pygame.mixer.music.load("./sounds/thunderrain.mp3")
-    option = pygame.mixer.Sound("./sounds/gun.mp3")
+    option = pygame.mixer.Sound("sounds/gun.mp3")
+
     pygame.mixer.music.play(-1)
+    winsound.PlaySound(r'./sounds/typewriter.wav', winsound.SND_ASYNC)
     os.system('cls')
     for line in lines:          # for each line of text (or each message)
         for c in line:          # for each character in each line
             print(c, end='')    # print a single character, and keep the cursor there.
             sys.stdout.flush()  # flush the buffer
             sleep(0.1)          # wait a little to make the effect look good.
-        print('')    
+        print('')  
+    winsound.PlaySound(None, winsound.SND_PURGE)
     print('\n')
     print('''   
     YOUR BIO DATA:
@@ -58,4 +62,4 @@ def start():
     input("Press enter to continue")   
     pygame.mixer.Sound.play(option)
     os.system('cls')
-          
+
