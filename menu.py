@@ -1,12 +1,23 @@
 import os
+
 import sys
+import pygame
 from credits import credit
 sys.path.append('./startgame')
 from startgame import start
+from playsound import playsound
 
 
 def menu():
     os.system('cls')
+    pygame.init()
+    pygame.mixer.music.load("sounds/menu.wav")
+    option = pygame.mixer.Sound("sounds/gun.mp3")
+ 
+    pygame.mixer.music.play(-1)
+
+
+
 
     print("              )        (           (         (                (     ")
     print("    *   )  ( /(        )\ )        )\ )      )\ )  *   )      )\ )  ")
@@ -29,10 +40,17 @@ def menu():
     print("     2: Credits\n")
     print("     3: Quit\n")
     choice = input("        Enter your choice: ")
+    pygame.mixer.music.stop()
     if choice == "1":
+        pygame.mixer.Sound.play(option)
+        
         start()
     elif choice == "2":
+        pygame.mixer.Sound.play(option)
+
         credit()
     elif choice == "3":
+        pygame.mixer.Sound.play(option)
+
         quit()
     
